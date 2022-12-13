@@ -38,7 +38,9 @@ const schema = mongoose.Schema({
 })
 
 const model = new mongoose.model("users", schema)
-
+app.get("/",(req,res,next)=>{
+    res.send("Page Hit !!");
+})
 app.post("/register", (req, res, next) => {
     console.log('hey')
     model.findOne({email: req.body.email})
@@ -105,5 +107,7 @@ app.get("/status", (req, res, next) => {
             res.status(500).send()
         })
 })
+
+
 
 app.listen(process.env.PORT || 8000);
